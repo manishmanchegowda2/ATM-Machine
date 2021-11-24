@@ -12,7 +12,8 @@ public class Bankaccount {
 
 	Scanner input = new Scanner(System.in);
 	DecimalFormat moneyFormat = new DecimalFormat("'$'###,##0.00");
-	
+
+	//Constructor for the definition of the Bank Account
 	public Bankaccount(int customerNumber, int pinNumber,double checkingBalance, double savingBalance) {
 		this.customerNumber = customerNumber;
 		this.pinNumber = pinNumber;
