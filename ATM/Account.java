@@ -101,11 +101,10 @@ public class Bankaccount {
 		boolean end = false;
 		while (!end) {
 			try {
-				System.out.println("\nCurrent Savings Bankaccount Balance: " + moneyFormat.format(savingBalance));
-				System.out.print("\nAmount you want to withdraw from Savings Bankaccount: ");
+				System.out.println("\nCurrent Savings Bankaccount Balance: " + moneyFormat.format(savingBalance) + "\nAmount you want to withdraw from Savings Bankaccount: ");
 				double amount = input.nextDouble();
 				if ((savingBalance - amount) >= 0 && amount >= 0) {
-					calcSavingWithdraw(amount);
+					calculateSavingWithdraw(amount);
 					System.out.println("\nCurrent Savings Bankaccount Balance: " + moneyFormat.format(savingBalance));
 					end = true;
 				} else {
@@ -126,7 +125,7 @@ public class Bankaccount {
 				System.out.print("\nAmount you want to deposit from Checkings Bankaccount: ");
 				double amount = input.nextDouble();
 				if ((checkingBalance + amount) >= 0 && amount >= 0) {
-					calcCheckingDeposit(amount);
+					calculateCheckingDeposit(amount);
 					System.out.println("\nCurrent Checkings Bankaccount Balance: " + moneyFormat.format(checkingBalance));
 					end = true;
 				} else {
