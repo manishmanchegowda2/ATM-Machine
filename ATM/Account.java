@@ -117,19 +117,18 @@ public class Bankaccount {
 		}
 	}
 
-	public void getCheckingDepositInput() {
+	public void getCheckingDepositInput() { 
 		boolean end = false;
 		while (!end) {
 			try {
-				System.out.println("\nCurrent Checkings Bankaccount Balance: " + moneyFormat.format(checkingBalance));
-				System.out.print("\nAmount you want to deposit from Checkings Bankaccount: ");
+				System.out.println("\nCurrent Checkings Bankaccount Balance: " + moneyFormat.format(checkingBalance)+"\nAmount you want to deposit from Checkings Bankaccount: ");
 				double amount = input.nextDouble();
-				if ((checkingBalance + amount) >= 0 && amount >= 0) {
+				if ((checkingBalance + amount) >= 0 && amount >= 0) {               //Big O is O(N)
 					calculateCheckingDeposit(amount);
 					System.out.println("\nCurrent Checkings Bankaccount Balance: " + moneyFormat.format(checkingBalance));
 					end = true;
 				} else {
-					System.out.println("\nBalance Cannot Be Negative.");
+					System.out.println("\nInsuffient Balance.");
 				}
 			} catch (InputMismatchException e) {
 				System.out.println("\nInvalid Choice.");
@@ -147,7 +146,7 @@ public class Bankaccount {
 				double amount = input.nextDouble();
 
 				if ((savingBalance + amount) >= 0 && amount >= 0) {
-					calcSavingDeposit(amount);
+					calculateSavingDeposit(amount);
 					System.out.println("\nCurrent Savings Bankaccount Balance: " + moneyFormat.format(savingBalance));
 					end = true;
 				} else {
