@@ -83,7 +83,7 @@ public class Bankaccount {
 			try {
 				System.out.println("\nCurrent Checkings Bankaccount Balance: " + moneyFormat.format(checkingBalance) + "\nAmount you want to withdraw from Checkings Bankaccount: ");
 				double amount = input.nextDouble();
-				if ((checkingBalance - amount) >= 0 && amount >= 0) {
+				if ((checkingBalance - amount) >= 0 && amount >= 0) {			//Big O is O(N)
 					calculateCheckingWithdraw(amount);
 					System.out.println("\nCurrent Checkings Bankaccount Balance: " + moneyFormat.format(checkingBalance));
 					end = true;
@@ -103,7 +103,7 @@ public class Bankaccount {
 			try {
 				System.out.println("\nCurrent Savings Bankaccount Balance: " + moneyFormat.format(savingBalance) + "\nAmount you want to withdraw from Savings Bankaccount: ");
 				double amount = input.nextDouble();
-				if ((savingBalance - amount) >= 0 && amount >= 0) {
+				if ((savingBalance - amount) >= 0 && amount >= 0) {				//Big O is O(N)
 					calculateSavingWithdraw(amount);
 					System.out.println("\nCurrent Savings Bankaccount Balance: " + moneyFormat.format(savingBalance));
 					end = true;
