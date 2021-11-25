@@ -48,22 +48,22 @@ public class Bankaccount {
 	}
 
 	public double calculateCheckingWithdraw(double amount) {
-		checkingBalance = (checkingBalance - amount);
+		checkingBalance = checkingBalance - amount;
 		return checkingBalance;
 	}
 
 	public double calculateSavingWithdraw(double amount) {
-		savingBalance = (savingBalance - amount);
+		savingBalance = savingBalance - amount;
 		return savingBalance;
 	}
 
 	public double calculateCheckingDeposit(double amount) {
-		checkingBalance = (checkingBalance + amount);
+		checkingBalance = checkingBalance + amount;
 		return checkingBalance;
 	}
 
 	public double calculateSavingDeposit(double amount) {
-		savingBalance = (savingBalance + amount);
+		savingBalance = savingBalance + amount;
 		return savingBalance;
 	}
 
