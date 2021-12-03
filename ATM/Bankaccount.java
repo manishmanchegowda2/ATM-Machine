@@ -1,4 +1,4 @@
-//importing modules
+//importing modules for their access
 import java.text.DecimalFormat;
 import java.util.InputMismatchException;
 import java.util.Scanner;
