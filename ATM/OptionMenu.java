@@ -6,33 +6,33 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 
-public class OptionMenu {
+public class AccountOptions {
 	Scanner menuInput = new Scanner(System.in);
 	DecimalFormat moneyFormat = new DecimalFormat("'$'###,##0.00");
-	HashMap<Integer, Bankaccount> data = new HashMap<Integer, Bankaccount>();
+	HashMap<Integer, Account> data = new HashMap<Integer, Account>();
 
 	public void getLogin() throws IOException {
 		boolean end = false;
-		int customerNumber = 0;
+		int customerAccountNumber = 0;
 		int pinNumber = 0;
 		while (!end) {
 			try {
-				System.out.print("\nEnter your customer number: ");
-				customerNumber = menuInput.nextInt();
+				System.out.print("\nEnter your customer Account number: ");
+				customerAccountNumber = menuInput.nextInt();
 				System.out.print("\nEnter your PIN number: ");
 				pinNumber = menuInput.nextInt();
 				Iterator it = data.entrySet().iterator();
 				while (it.hasNext()) {
 					Map.Entry pair = (Map.Entry) it.next();
-					Bankaccount acc = (Bankaccount) pair.getValue();
-					if (data.containsKey(customerNumber) && pinNumber == acc.getPinNumber()) {
-						getBankaccountType(acc);
+					Account acc = (Account) pair.getValue();
+					if (data.containsKey(customerAccountNumber) && pinNumber == acc.getPinNumber()) {
+						getAccountType(acc);
 						end = true;
 						break;
 					}
 				}
 				if (!end) {
-					System.out.println("\nWrong Customer Number or Pin Number");
+					System.out.println("\nWrong Customer Account Number or Pin Number");
 				}
 			} catch (InputMismatchException e) {
 				System.out.println("\nInvalid Character(s). Only Numbers.");
@@ -40,16 +40,11 @@ public class OptionMenu {
 		}
 	}
 
-	public void getBankaccountType(Bankaccount acc) {
+	public void getAccountType(Account acc) {
 		boolean end = false;
 		while (!end) {
 			try {
-				System.out.println("\nSelect the Bankaccount you want to access: ");
-				System.out.println(" Type 1 - Checkings Bankaccount");
-				System.out.println(" Type 2 - Savings Bankaccount");
-				System.out.println(" Type 3 - Exit");
-				System.out.print("\nChoice: ");
-
+				System.out.println("\nSelect the account you want to access: " + "\nType 1 - Checkings Account" + "\nType 2 - Savings Account" + "\nType 3 - Exit" + "\nChoice: ");
 				int selection = menuInput.nextInt();
 
 				switch (selection) {
@@ -72,23 +67,16 @@ public class OptionMenu {
 		}
 	}
 
-	public void getChecking(Bankaccount acc) {
+	public void getChecking(Account acc) {
 		boolean end = false;
 		while (!end) {
 			try {
-				System.out.println("\nCheckings Bankaccount: ");
-				System.out.println(" Type 1 - View Balance");
-				System.out.println(" Type 2 - Withdraw Funds");
-				System.out.println(" Type 3 - Deposit Funds");
-				System.out.println(" Type 4 - Transfer Funds");
-				System.out.println(" Type 5 - Exit");
-				System.out.print("\nChoice: ");
-
+				System.out.println("\nCheckings Account: " + "\nType 1 - View Balance" + "\nType 2 - Withdraw Funds" + "\nType 3 - Deposit Funds" + "\nType 4 - Transfer Funds" + "\nType 5 - Exit" +"\nChoice: ");
 				int selection = menuInput.nextInt();
 
 				switch (selection) {
 				case 1:
-					System.out.println("\nCheckings Bankaccount Balance: " + moneyFormat.format(acc.getCheckingBalance()));
+					System.out.println("\nCheckings Account Balance: " + moneyFormat.format(acc.getCheckingBalance()));
 					break;
 				case 2:
 					acc.getCheckingWithdrawInput();
@@ -113,21 +101,15 @@ public class OptionMenu {
 		}
 	}
 
-	public void getSaving(Bankaccount acc) {
+	public void getSaving(Account acc) {
 		boolean end = false;
 		while (!end) {
 			try {
-				System.out.println("\nSavings Bankaccount: ");
-				System.out.println(" Type 1 - View Balance");
-				System.out.println(" Type 2 - Withdraw Funds");
-				System.out.println(" Type 3 - Deposit Funds");
-				System.out.println(" Type 4 - Transfer Funds");
-				System.out.println(" Type 5 - Exit");
-				System.out.print("Choice: ");
+				System.out.println("\nSavings Account: " + "\nType 1 - View Balance" + "\nType 2 - Withdraw Funds" + "\nType 3 - Deposit Funds" + "\nType 4 - Transfer Funds" + "\nType 5 - Exit" + "\nChoice: " );
 				int selection = menuInput.nextInt();
 				switch (selection) {
 				case 1:
-					System.out.println("\nSavings Bankaccount Balance: " + moneyFormat.format(acc.getSavingBalance()));
+					System.out.println("\nSavings Account Balance: " + moneyFormat.format(acc.getSavingBalance()));
 					break;
 				case 2:
 					acc.getsavingWithdrawInput();
@@ -151,17 +133,17 @@ public class OptionMenu {
 		}
 	}
 
-	public void createBankaccount() throws IOException {
-		int cst_no = 0;
+	public void createAccount() throws IOException {
+		int customer_id = 0;
 		boolean end = false;
 		while (!end) {
 			try {
 				System.out.println("\nEnter your customer number ");
-				cst_no = menuInput.nextInt();
+				customer_id = menuInput.nextInt();
 				Iterator it = data.entrySet().iterator();
 				while (it.hasNext()) {
 					Map.Entry pair = (Map.Entry) it.next();
-					if (!data.containsKey(cst_no)) {
+					if (!data.containsKey(customer_id)) {
 						end = true;
 					}
 				}
@@ -175,21 +157,18 @@ public class OptionMenu {
 		}
 		System.out.println("\nEnter PIN to be registered");
 		int pin = menuInput.nextInt();
-		data.put(cst_no, new Bankaccount(cst_no, pin));
-		System.out.println("\nYour new Bankaccount has been successfuly registered!");
-		System.out.println("\nRedirecting to login.............");
+		data.put(customer_id, new Account(customer_id, pin));
+		System.out.println("\nYour new account has been successfuly registered!" + "\nRedirecting to login.............");
 		getLogin();
 	}
 
 	public void mainMenu() throws IOException {
-		data.put(952141, new Bankaccount(952141, 191904, 1000, 5000));
-		data.put(123, new Bankaccount(123, 123, 20000, 50000));
+		data.put(952141, new Account(952141, 191904, 1000, 5000));
+		data.put(123, new Account(123, 123, 20000, 50000));
 		boolean end = false;
 		while (!end) {
 			try {
-				System.out.println("\n Type 1 - Login");
-				System.out.println(" Type 2 - Create Bankaccount");
-				System.out.print("\nChoice: ");
+				System.out.println("\n Type 1 - Login" + "\nType 2 - Create Account" + "\nChoice: ");
 				int choice = menuInput.nextInt();
 				switch (choice) {
 				case 1:
@@ -197,7 +176,7 @@ public class OptionMenu {
 					end = true;
 					break;
 				case 2:
-					createBankaccount();
+					createAccount();
 					end = true;
 					break;
 				default:

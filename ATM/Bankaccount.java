@@ -3,6 +3,7 @@ import java.text.DecimalFormat;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+//This is the class for the bank account. 
 public class Bankaccount {
 
 	private int customerNumber;
@@ -46,37 +47,37 @@ public class Bankaccount {
 	public double getSavingBalance() {
 		return savingBalance;
 	}
-
+    //This is the calculation of checking account balance
 	public double calculateCheckingWithdraw(double amount) {
 		checkingBalance = checkingBalance - amount;
 		return checkingBalance;
 	}
-
+    //This is the calculation of saving account balance
 	public double calculateSavingWithdraw(double amount) {
 		savingBalance = savingBalance - amount;
 		return savingBalance;
 	}
-
+	//This is the calculation of checking account after depositing money
 	public double calculateCheckingDeposit(double amount) {
 		checkingBalance = checkingBalance + amount;
 		return checkingBalance;
 	}
-
+	//This is the calculation of saving account after depositing money
 	public double calculateSavingDeposit(double amount) {
 		savingBalance = savingBalance + amount;
 		return savingBalance;
 	}
-
+	//This is the calculation of amount after transfering the money from checking to saving
 	public void calculateCheckTransfer(double amount) {
 		checkingBalance = checkingBalance - amount;
 		savingBalance = savingBalance + amount;
 	}
-
+	//This is the calculation of amount after transfering the money from saving to checking
 	public void calculateSavingTransfer(double amount) {
 		savingBalance = savingBalance - amount;
 		checkingBalance = checkingBalance + amount;
 	}
-
+	//This is the error handling
 	public void getCheckingWithdrawInput() {
 		boolean end = false;
 		while (!end) {
@@ -96,7 +97,7 @@ public class Bankaccount {
 			}
 		}
 	}
-
+	//This is the error handling
 	public void getsavingWithdrawInput() {
 		boolean end = false;
 		while (!end) {
@@ -116,7 +117,7 @@ public class Bankaccount {
 			}
 		}
 	}
-
+	//This is the error handling
 	public void getCheckingDepositInput() { 
 		boolean end = false;
 		while (!end) {
